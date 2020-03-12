@@ -8,7 +8,7 @@ object CustomSinkToMySQL {
 
     val env = StreamExecutionEnvironment.getExecutionEnvironment
 
-    val data = env.socketTextStream("localhost",9999)
+    val data = env.socketTextStream("localhost", 9999)
 
     val ds: DataStream[Student] = data.map(x => {
       val strings = x.split(",")
@@ -16,6 +16,7 @@ object CustomSinkToMySQL {
     })
 
     ds.addSink(new SinkToMySQL)
+      //.setParallelism(1)
 
     env.execute("CustomSinkToMySQL")
 

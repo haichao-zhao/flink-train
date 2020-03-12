@@ -30,6 +30,7 @@ class SinkToMySQL extends RichSinkFunction[Student] {
     val sql = "insert into student(id,name,age) values (?,?,?) ON DUPLICATE KEY UPDATE name=?,age=?"
 
     pstm = conn.prepareStatement(sql)
+    println("open")
   }
 
   /**
