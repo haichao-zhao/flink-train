@@ -12,7 +12,9 @@ object WindowsApp {
 
     val data = env.socketTextStream("localhost", 9999)
 
-    tumblingWindowsFunc(data)
+    //    tumblingWindowsFunc(data)
+
+    windowsReduceFunc(data)
 
     env.execute("WindowsApp")
   }
@@ -32,8 +34,21 @@ object WindowsApp {
     data.flatMap(_.split(" "))
       .map((_, 1))
       .keyBy(0)
-      .timeWindow(Time.seconds(10),Time.seconds(5))
+      .timeWindow(Time.seconds(10), Time.seconds(5))
       .sum(1)
+      .print()
+  }
+
+  //窗口函数：Reduce
+  private def windowsReduceFunc(data: DataStream[String]) = {
+    data.flatMap(_.split(" "))
+      .map(x => (1, x.toInt))
+      .keyBy(0)
+      .timeWindow(Time.seconds(5))
+      .reduce((x, y) => {
+        println(x, y)
+        (x._1, x._2 + y._2)
+      })
       .print()
   }
 }
