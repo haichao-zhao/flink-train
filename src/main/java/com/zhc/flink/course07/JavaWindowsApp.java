@@ -15,6 +15,15 @@ public class JavaWindowsApp {
 
         DataStreamSource<String> data = env.socketTextStream("localhost", 9999);
 
+        tumblingWindowsFunc(data);
+
+        env.execute("JavaWindowsApp");
+
+    }
+
+    //滚动窗口方式处理
+    private static void tumblingWindowsFunc(DataStreamSource<String> data) {
+
         data.flatMap(new FlatMapFunction<String, Tuple2<String, Integer>>() {
             @Override
             public void flatMap(String value, Collector<Tuple2<String, Integer>> out) throws Exception {
@@ -29,10 +38,6 @@ public class JavaWindowsApp {
                 .sum(1)
                 .print()
                 .setParallelism(1);
-
-
-        env.execute("JavaWindowsApp");
-
     }
 
 }
