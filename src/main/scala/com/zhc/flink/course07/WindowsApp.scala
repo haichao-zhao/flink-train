@@ -26,4 +26,14 @@ object WindowsApp {
       .sum(1)
       .print()
   }
+
+  //滑动窗口方式处理
+  private def slidingWindowsFunc(data: DataStream[String]) = {
+    data.flatMap(_.split(" "))
+      .map((_, 1))
+      .keyBy(0)
+      .timeWindow(Time.seconds(10),Time.seconds(5))
+      .sum(1)
+      .print()
+  }
 }
