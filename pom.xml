@@ -8,20 +8,21 @@
     <properties>
         <scala.version>2.11.8</scala.version>
         <flink.version>1.7.0</flink.version>
+        <hadoop.version>2.6.0</hadoop.version>
     </properties>
 
     <dependencies>
 
         <!--添加 Flink Java 依赖-->
         <!--<dependency>-->
-            <!--<groupId>org.apache.flink</groupId>-->
-            <!--<artifactId>flink-java</artifactId>-->
-            <!--<version>${flink.version}</version>-->
+        <!--<groupId>org.apache.flink</groupId>-->
+        <!--<artifactId>flink-java</artifactId>-->
+        <!--<version>${flink.version}</version>-->
         <!--</dependency>-->
         <!--<dependency>-->
-            <!--<groupId>org.apache.flink</groupId>-->
-            <!--<artifactId>flink-streaming-java_2.11</artifactId>-->
-            <!--<version>${flink.version}</version>-->
+        <!--<groupId>org.apache.flink</groupId>-->
+        <!--<artifactId>flink-streaming-java_2.11</artifactId>-->
+        <!--<version>${flink.version}</version>-->
         <!--</dependency>-->
 
         <!--添加 Flink Scala 依赖-->
@@ -48,6 +49,27 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.43</version>
+        </dependency>
+
+        <!--添加Flink 连接器依赖-->
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-connector-filesystem_2.11</artifactId>
+            <version>${flink.version}</version>
+        </dependency>
+
+        <!--添加hadoop 依赖-->
+        <dependency>
+            <groupId>org.apache.hadoop</groupId>
+            <artifactId>hadoop-client</artifactId>
+            <version>${hadoop.version}</version>
+        </dependency>
+
+        <!--添加Flink Kafka 依赖-->
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-connector-kafka_2.11</artifactId>
+            <version>${flink.version}</version>
         </dependency>
 
         <dependency>
