@@ -47,14 +47,20 @@ object CounterApp {
       }
     })
 
-    val filePath = "file:///Users/zhaohaichao/workspace/javaspace/flink-train/data/04/sink-scala-counter-out/"
-    info.writeAsText(filePath, WriteMode.OVERWRITE).setParallelism(3)
+    val filePath = "hdfs://localhost:8020/sink-scala-counter-out/"
+//    val filePath = "file:///Users/zhaohaichao/workspace/javaspace/flink-train/data/04/sink-scala-counter-out/"
+    info.writeAsText(filePath, WriteMode.OVERWRITE).setParallelism(1)
+
+    Thread.sleep(60000)
+
     val jobResult = env.execute("CounterApp")
 
     // step3: 获取计数器
     val num = jobResult.getAccumulatorResult[Long]("ele-counts-scala")
 
     println("num: " + num)
+
+
   }
 
 }
