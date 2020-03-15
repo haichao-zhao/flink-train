@@ -52,9 +52,9 @@ object DataSetDataSourceApp {
     //val text: DataSet[People] = env.readCsvFile[People](file,ignoreFirstLine = true)
 
     //pojo 方式
-    val text: DataSet[PeoplePojo] = env.readCsvFile[PeoplePojo](file, ignoreFirstLine = true, pojoFields = Array("name", "age", "job"))
+//    val text: DataSet[PeoplePojo] = env.readCsvFile[PeoplePojo](file, ignoreFirstLine = true, pojoFields = Array("name", "age", "job"))
 
-    text.print()
+//    text.print()
   }
 
   //从递归文件夹的内容创建DataSet

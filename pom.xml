@@ -7,7 +7,7 @@
     <inceptionYear>2008</inceptionYear>
     <properties>
         <scala.version>2.11.8</scala.version>
-        <flink.version>1.7.0</flink.version>
+        <flink.version>1.7.2</flink.version>
         <hadoop.version>2.6.0</hadoop.version>
     </properties>
 
@@ -72,6 +72,20 @@
             <version>${flink.version}</version>
         </dependency>
 
+        <!--添加Flink ES 依赖-->
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-connector-elasticsearch6_2.11</artifactId>
+            <version>${flink.version}</version>
+        </dependency>
+
+        <!--添加HTTP 依赖-->
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.5.10</version>
+        </dependency>
+
         <dependency>
             <groupId>org.scala-lang</groupId>
             <artifactId>scala-library</artifactId>
@@ -83,12 +97,7 @@
             <version>4.4</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.specs</groupId>
-            <artifactId>specs</artifactId>
-            <version>1.2.5</version>
-            <scope>test</scope>
-        </dependency>
+
     </dependencies>
 
     <build>
